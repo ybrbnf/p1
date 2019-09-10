@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if form.errors %}
+<p>Неправильная комбинация имени поользователя и пароля. Попробуйте еще раз.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>у Вас недостаточно прав для просмотра этой страницы.</p>
+    {% else %}
+    <p>Пожалуйста авторизуйтесь</p>
+    {% endif %}
+{% endif %}
+
+<div class="row">
+  <form class="col s12" enctype="multipart/form-data" method="POST" id="form_ID" action="{% url 'login' %}">
+    {% csrf_token %} 
+    <div class="row">
+      <div class="input-field col s12">
+        {{ form.username }}
+        <label for="{{ form.username.id_for_label }}">Имя пользователя</label>
+      </div>
+      <div class="input-field col s12">
+        {{ form.password }}
+        <label for="{{ form.password.id_for_label }}">Пароль</label>
+      </div>
+    </div>
+    <div class="center-align">
+      <button class="btn-floating btn-middle waves-effect waves-light" type="submit" name="action">
+      <i class="material-icons">exit_to_app</i>
+      </button>
+      <div>
+        <a href="{% url 'password_reset' %}" class="white-text">Забыли пароль?</a>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+{# Assumes you setup the password_reset view in your URLconf #}
+
+
+{% endblock %}

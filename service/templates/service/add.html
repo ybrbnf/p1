@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content%}
+ 
+<div class="row">
+	<form class="col s12" enctype="multipart/form-data" method="POST" id="form_ID">
+		{% csrf_token %} 
+		<div class="row">
+			<div class="input-field col s12">
+				{{ form.cold_water }}
+				<label for="{{ form.cold_water.id_for_label }}">Холодная вода</label>
+			</div>
+			<div class="input-field col s12">
+				{{ form.hot_water }}
+				<label for="{{ form.hot_water.id_for_label }}">Горячая вода</label>
+			</div>
+			<div class="input-field col s12">
+				{{ form.electricity }}
+				<label for="{{ form.electricity.id_for_label }}">Электричество</label>
+			</div>
+			<div class="input-field col s12">
+				{{ form.gaz }}
+				<label for="{{ form.gaz.id_for_label }}">Газ</label>
+			</div>
+		</div>
+		<div class="center-align">
+		<button class="btn-floating btn-middle waves-effect waves-light" type="submit" name="action">
+        	<i class="material-icons">add</i>
+  		</button>
+  	</div>
+    </form>
+    
+</div>
+{% endblock %}

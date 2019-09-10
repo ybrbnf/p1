@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content%} 
+<i class="material-icons">report</i>
+{% for keys,values in message.items %}
+<li> {{ keys }}: {{ values }}
+{% endfor %}
+{% endblock %}

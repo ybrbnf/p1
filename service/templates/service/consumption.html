@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content%}
+
+<div class="col s12 card-panel teal center-align">
+<ul class="pagination">
+ 
+    {% if consumption.has_previous %}
+        <li>
+        <a href="?page={{ consumption.previous_page_number }}" class="white-text">
+        <i class="material-icons">chevron_left</i></a></li>
+    {% endif %}
+ 
+    {% for num in consumption.paginator.page_range %}
+        {% if num == consumption.number %}
+            <li>
+            <span class="current"><b>{{ num }}</b></span></li>
+        {% else %}
+           <li>
+           <a href="?page={{ num }}"> {{ num }}</a></li>
+        {% endif %} 
+    {% endfor %}
+ 
+    {% if consumption.has_next %}
+      <li>
+      <a href="?page={{ consumption.next_page_number }}" class="white-text">
+      <i class="material-icons">chevron_right</i></a></li>
+    {% endif %}
+ 
+</ul>
+</div>
+       
+
+        <table>
+
+        <tr>
+
+            <td>Дата</td>
+            <td>Хол.Вода</td>
+            <td>Гор.Вода</td>
+            <td>Эл-во</td>
+            <td>Газ</td>
+
+        </tr>
+
+        {% for item in consumption %}
+
+            <tr>
+
+                <td>{{ item.pub_date }}</td>
+                <td>{{ item.cold_water }}</td>
+                <td>{{ item.hot_water }}</td>
+                <td>{{ item.electricity }}</td>
+                <td>{{ item.gaz }}</td>
+
+            </tr>
+
+        {% endfor %}
+
+        </table>
+       
+        <div class="center-align">
+        <a href="{% url 'service:upd' %}" class="btn-floating btn-middle waves-effect waves-light">
+        <i class="material-icons">refresh</i></a>
+    </div>
+ 
+{% endblock %}
