@@ -10,3 +10,4 @@ datadump.json
 settings.ini
 settings.py
 wsgi.py
+manage.py
