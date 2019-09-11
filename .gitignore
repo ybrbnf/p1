@@ -8,6 +8,7 @@ db.sqlite3
 createConfig.py
 datadump.json
 settings.ini
-settings.py
+settings_local.py
+settings_server.py
 wsgi.py
 manage.py

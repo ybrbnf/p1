@@ -3,26 +3,30 @@
 
 <form class="col s12" method="POST" id="form_ID" action="{% url 'send_sms:send' %}">
 {% csrf_token %} 
-          <div class="input-field col s6">
+<div class="row">
+          <div class="input-field col s6 left">
             <i class="material-icons prefix">phone</i>
-            <label for="phone_number_elec">Номер телефона СПГЭС</label>
+            <label for="phone_number_elec">СПГЭС</label>
             <input value="{{ phone_number_elec }}" id="phone_number_elec" type="text" name="phone_number_elec" class="validate">
           </div>
-          <div class="input-field col s6">
+          <div class="input-field col s6 right">
             <i class="material-icons prefix">mode_edit</i>
             <label for="message_elec">Сообщение</label>
             <input value="{{ message_elec }}" id="message_elec" type="text" name="message_elec" class="validate">
           </div>
-          <div class="input-field col s6">
+</div>
+<div class="row">
+          <div class="input-field col s6 left">
             <i class="material-icons prefix">phone</i>
-            <label for="phone_number_gaz">Номер телефона СарГС</label>
+            <label for="phone_number_gaz">СарГС</label>
             <input value="{{ phone_number_gaz }}" id="phone_number_gaz" type="text" name="phone_number_gaz" class="validate">
           </div>
-          <div class="input-field col s6">
+          <div class="input-field col s6 right">
             <i class="material-icons prefix">mode_edit</i>
             <label for="message_gaz">Сообщение</label>
             <input value="{{ message_gaz }}" id="message_gaz" type="text" name="message_gaz" class="validate">
           </div>
+</div>
 </form>
 <div class="center-align">
   <a class="btn-floating btn-middle waves-effect waves-light" onClick="document.getElementById('form_ID').submit(); return false;">

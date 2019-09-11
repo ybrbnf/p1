@@ -42,10 +42,10 @@
       <ul class="side-nav" id="mobile-demo">
         {% if user.is_authenticated %}
         <li>{{ user.username }}<a href="{% url 'logout'%}">Выход</a></li>
-        <hr>
         {% else %}
         <li><a href="{% url 'login'%}?next={{request.path}}">Вход</a></li>
         {% endif %}
+        <div class="divider"></div>
         <li><a href="{% url 'service:add' %}" title="Добавить показания">Добавить</a></li>
         <li><a href="{% url 'service:home' %}">Показания</a></li>
         <li><a href="{%url 'service:consuming'%}">Расход</a></li>
