@@ -5,14 +5,34 @@
 	<form class="col s12" enctype="multipart/form-data" method="POST" id="form_ID">
 		{% csrf_token %} 
 		<div class="row">
-			<div class="input-field col s12">
+			<div class="input-field col s12 m3">
+				<input name="val1" type="text" value=""></input>
+				<label>Хол.вода кухня</label>
+			</div>	
+			<div class="input-field col s12 m3">	
+				<input name="val2" type="text" value="" oninput="{{ form.cold_water.id_for_label }}.value = parseInt(val1.value) + parseInt(val2.value)"></input>
+				<label>Хол.вода ванная</label>
+			</div>
+			<div class="input-field col s12 m6">
 				{{ form.cold_water }}
-				<label for="{{ form.cold_water.id_for_label }}">Холодная вода</label>
+				<label for="{{ form.cold_water.id_for_label }}">Холодная вода (общая)</label>
 			</div>
-			<div class="input-field col s12">
+
+
+			<div class="input-field col s12 m3">
+				<input name="val3" type="text" value=""></input>
+				<label>Гор.вода кухня</label>
+			</div>	
+			<div class="input-field col s12 m3">	
+				<input name="val4" type="text" value="" oninput="{{ form.hot_water.id_for_label }}.value = parseInt(val3.value) + parseInt(val4.value)"></input>
+				<label>Гор.вода ванная</label>
+			</div>
+			<div class="input-field col s12 m6">
 				{{ form.hot_water }}
-				<label for="{{ form.hot_water.id_for_label }}">Горячая вода</label>
+				<label for="{{ form.hot_water.id_for_label }}">Горячая вода (общая)</label>
 			</div>
+
+
 			<div class="input-field col s12">
 				{{ form.electricity }}
 				<label for="{{ form.electricity.id_for_label }}">Электричество</label>
@@ -28,6 +48,8 @@
   		</button>
   	</div>
     </form>
-    
+
+
 </div>
+
 {% endblock %}
